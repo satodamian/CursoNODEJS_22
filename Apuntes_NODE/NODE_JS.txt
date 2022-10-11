@@ -1,0 +1,185 @@
+I. DEFINICION: 
+	Entorno de ejecucion de JS orientados en eventos asincronos
+	a) Entorno de ejecucion:
+	Infraestructura en el cual se ejecuta un programa y/o aplicacion.
+	b) Eventos asincrono
+	Evento que se ejecuta independientemente del proceso principal de la aplicacion
+
+2. CARACTERISTICAS
+	a) Open-Source
+	b) Multiplataforma
+	c) Motor V8 Google
+
+3. CONCEPTOS:
+	a) Arquitectura Cliente-Servidor: El modelo envia recursos al dispositivo que lo solicita
+	b) Desarrollo Front-End: Area del desarrollo web que se encarga del desarrollo de los componentes que 
+		(SE VE)		 ve y interactua el usuario.
+
+	c) Desarrollo Back-End: Area del desarrollo web que se encarga del desarrollo de los servidores y BD
+		(NO SE VE)
+
+	d) Protocolos (HTTP/ HTTPS)
+	
+	e) Base de Datos
+
+	ESTRUCTURA: NAVEGADOR -> SERVIDOR -> BASE DE DATOS (ida y vuelta) 
+		    BASE DE DATOS -> SERVIDOR -> NAVEGADOR
+
+	ROL DE NODE: Desarrollo de Servidores que procesaran las solicitudes del navegadores
+
+	f) Paginas web estaticas (No necesitan interaccion del usuario (blog))
+	g) Paginas web dinamicas (Interaccion del usuario)
+
+
+II. APLICACIONES
+	-Desarrollo Back-End
+	-Desarrollo de APIS
+
+a) ¿Que es una API? Interfaz de Programacion de Aplicaciones
+	Cuando navegamos en internet se visualiza la interfaz de usuario para poder interacturar hacia la paginas web
+	Con respecto a las APIS es una interfaz entre programas que se ejecutan tanto en el cliente y el servidor
+	
+III. VENTAJAS
+	a) Permite desarrollar aplicaciones escalables y de tiempo real.
+		Escalable: Su rendimiento se adapta de acuerdo al crecimiento y uso de la aplicacion, ademas de recibir
+			   mas solicitudes
+		App de tiempo real: Establecer una conexion bidireccional y dinamica entre el servidor y el cliente
+
+IV. QUE NO ES NODE.JS
+	-Lenguaje de Programacion
+	-Framework
+	-Libreria
+ 	
+	NODEJS ES UN ENTORNO DE EJECUCION QUE APLICA JAVASCRIPT
+
+////////////////// *********** MODULOS EN NODEJS  **************////////////////////////////////////
+
+PARTE 01:
+	a) Funcionalidad organizada en uno o varios archivos JavaScript que puede ser reutilizada en una aplicacion
+		Palabras Clave: Estructuracion de la funcionalidad de la aplicacion
+	b) Ventajas:
+		- Evitar repiticion del codigo
+		- Reutilizar el codigo
+		- Es mas facil encontrar y corregir bugs
+		- Es mas facil modificar el codigo
+		- Es mas facil agregar una nueva funcionalidad
+PARTE 02:
+	a) Modulos built-in: Modulos que puedes usar directamente al trabajar con NODEJS
+	-http, https, fs(file system), os, path
+
+PARTE 03:
+	MODULO CONSOLE
+	 * Modulo built-in que implementa funcionalidad similar a la consola de un navegador web.
+	 * Nos permite ejecutar el codigo de JavaScript y mostrar el resultado en el terminal.
+	 * Parte de las herramientas de desarrollar.
+
+////////////////************* NPM ************************** ///////
+Es el archivo de software mas grande del mundo que contiene paquetes que puedes instalar y usar con Node.js
+a) Paquetes: Archivos o directorios descrito por un archivo package.json
+b) Modulos: Cualquier arhcivo o directorio en el directorio node_modules que puede ser importado con require.
+c) Node_Modules: Se crea gracias a la importacion de NPM
+
+//Nota: solos los modulos con package.json son paquetes
+
+d) Dependencia: Paquete que otro paquete necesita para funcionar correctamente
+
+//////////////////// ************ JSON **************************///
+JSON esta basado en la notacion de objetos de JS pero es solo texto
+Nos permite almacenar objetos de JS como texto
+Es independientemente al lenguaje de programacion en la cual se trabaje
+
+CARACTERISTICAS: Los datos se representan como pares clave-valor (propiedades)
+				 Dicha informacion esta rodeado por {} o [] (Arreglo de JSON)
+				 Los pares deben estar separados por una coma
+				 Pueden contener cadenas de caracteres, numeros, areglos, valores booleanos, objetos
+
+Podemos convertir del formato JSON una informacion de dicho formato a JS y viceversa (en objeto)
+
+///////////////////////// ********* PACKAGE-JSON *********** ////////////////////
+Se genera automaticamente cuando npm modifica el arbol de node_modules o package.json.
+Describe el arbol generado para que futuras instalaciones puedan generar exactamente el mismo arbol.
+Otros desarrolladores pueden instalar exactamente las mismas dependencias.
+
+
+---> EVENTOS:
+Es una accion que se realiza en la aplicacion.
+NODE esta basado en eventos asincronos
+EMITTERS: Objeto que emite eventos nombrados y llaman a funciones especificas cuando estos ocurren
+		  Son instancias de la clase EventEmitter
+		  Tienen un metodo .on para asociar una funcion al evento
+		  Event Handler (manejan los eventos)
+
+
+////////////////// ********* MODELO CLIENTE-SERVIDOR ************ /////////////////////
+Modelo que usamos para acceder a internet para obtener recursos de informacion
+Cliente envia solicitudes a un servidor que esta escuchando dichas solicitudes y responde
+CLIENTE: Es el navegador en el cual se realizan solicitudes a un servidor.
+SERVIDOR: Programa que se ejecuta en un servidor fisico para ofrecer un servicio al cliente. Envia informacion
+
+=> El servidor conoce el formato esperado del mensaje que envia el cliente
+=> El cliente conoce el formato esperado del mensaje que recibe del servidor
+
+..> El protocolo HTTP define el formato de los mensaje
+
+a) PROTOCOLO: Conjunto de reglas que permiten transmitir informacion entre dispositivos de una rendimiento
+    HTTP: protocolo de transferencia de hipertexto
+
+b) SOLICITUDES HTTP: Cuando un cliente le pide informacion a un servidor para realizar un proceso, esta realizando un request(solicitud)
+					 REQUEST -> Metodos HTTP, Camino(path), Version de HTTP, Cabeceras, Cuerpo
+
+c) METODOS HTTP: Verbo o sustantivo que indica la intencion de dicha solicitud (¿Que quiere el navegador?)
+				GET(Obtener): Solicitar un recurso especifico.
+				POST(): Crear un recurso especifico, como agregar un usuario nuevo a una BD
+				PUT():	Modificar un recurso especifico, como hacer un cambio en la BD
+				DELETE(): Eliminar un recurso especifico, como eliminar un usuario en la BD
+
+d) RESPUESTAS HTTP: El servidor la procesa y envia un Response
+					RESPONSE: Codigo de estado, texto de estado, version de HTTP, Cabeceras, Cuerpo
+
+e) CODIGO DE ESTADO HTTP (Respuestas): Son esenciales para que el cliente(navegador) sepa que paso con la solicitud que se acaba de enviar.
+	Respuestas informativas (100-199)
+	Respuestas satisfactorias (200-299)
+	Redirecciones (300-399)
+	Errores de los clientes (400-499)
+	Errores de los servidores (500-599)
+
+f) PUERTO: Ubicacion virtual del SO en la cual se puede acceder a una aplicacion o a un proceso especifico que se este ejecutando en dicho PUERTO
+
+////////////////////////////// ------ URL  -----//////////////////////////////////////////////
+Es una direccion de un recurso en la web
+RAIZ: Protocolo(http/https), Subdominio(www), Dominio(freecodecamp), Dominios de nivel superior - TLD(org), Camino -PATH(espanol)
+
+	PATH: Archivo o directorio en el servidor web, puede tener parametros para personalizar y estos son parte de la URL
+	Ejemplo1: https://www.ejemplo.org/usuarios/13, donde usuarios/13 es parametro de ruta
+	Ejemplo2: https://www.google.org/search?q=cursos+de+node/13, donde q es parametro query
+
+	PARAMETRO QUERY: Son parametros usados para obtener contenido dinamico (query strings)
+		?q=cursos+de+node => clave(q) = cursos+de+node(valor)
+	Para agregar varios parametros query se separan con & y cada par tiene su clave y valor separados con el signo =
+
+////////////////////////////// ---- Routing ----------- ///////////////////////////////////
+Manejar las solicitudes del cliente en base a ciertos criterios (metodos y Camino)
+
+////////////////////********** NODEMON ********************** ///////////////
+Herramienta que reinicia la aplicacion de Node.JS cuando detecta algun cambio (npm i -g nodemon)
+
+
+				++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-------------------------------         EXPRESS          -----------------------------------------------
+	Es el framework web mas popular de Node.js
+	Nos ayuda a desarrollar aplicaciones en Node.js
+a) Caracteristicas:
+	- Routing (Creacion de rutas)
+	- Enfocado en alto rendimiento
+	- Nos permite desarrollar aplicaciones de Node.js mas rapidamente con codigo mas conciso
+b) Conceptos importantes:
+	CRUD: Operaciones basicas que se pueden realizar con la informacion almacenada, ralacionadas a las api y BD
+	c -> POST, R -> GET, U -> PUT, D -> DELETE
+
+	API: Tipo de interfaz de software que permite que dos o mas programas se comuniquen entre signo
+		 Permite que un software ofrezca un servicio a otro software
+		 No es usada directamente por el usuario sino por el Dev que usa la API para implementar su programa
+	
+	REST: Estilo de arquitectura de software para sistemas hipermedia distribuidas como la www
+
+	RESTful API: Es una API basada en REST
